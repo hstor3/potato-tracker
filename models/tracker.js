@@ -2,22 +2,47 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const trackerSchema = new Schema({
-    name: {
-        type: String,
-        trim: true,
-        required: 'Enter a name for tracking'
-    },
-    value: {
-        type: Number,
-        required: ''
-    },
-    date: {
+const workoutSchema = new Schema({
+    day: {
         type: Date, 
-        default: Date.now
-    }
+        default: () => new Date()
+    },
+    exercises: [
+        {
+            type: {
+                type: String,
+                trim: true,
+                required: 'What type of workout?'
+            },
+            name: {
+                type: String,
+                trim: true,
+                required: 'Enter a name for tracking'
+            },
+            duration: {
+                type: Number,
+                required: 'How long?'
+            },
+            weight: {
+                type: Number,
+            },
+            reps: {
+                type: Number,
+            },
+            sets: {
+                type: Number,
+            },
+            distance: {
+                type: Number,
+            }
+        }
+
+    ],
 });
 
-const Tracker = mongoose.model('Tracker', trackerSchema);
+const Workout = mongoose.model('Workout', workoutSchema);
 
-module.exports = Tracker;
+module.exports = Workout;
+
+// npm install morgan
+// .aggregate method
