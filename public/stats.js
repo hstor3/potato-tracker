@@ -109,3 +109,7 @@ function populateChart(data) {
 
 // get all workout data from back-end
 API.getWorkoutsInRange().then(populateChart);
+
+
+// mongo atlas
+// online cloud database 
